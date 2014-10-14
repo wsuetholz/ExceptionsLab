@@ -111,11 +111,19 @@ public class Employee {
 		    }
 		    try {
 			int tstnum = Integer.parseInt(ssnParts[i]);
+		    } catch (NumberFormatException ex) {
+			pass = false;
+			break;
 		    }
 		}
 	    } else {
-		
+		if (ssn.length() > 9) {
+		    pass = false;
+		}
 	    }
+	}
+	if (!pass) {
+	    throw new IllegalArgumentException();
 	}
         this.ssn = ssn;
     }
