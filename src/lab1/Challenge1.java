@@ -22,13 +22,20 @@ public class Challenge1 {
         Challenge1 app = new Challenge1();
         
         String fullName = JOptionPane.showInputDialog("Enter full name (use Format: first last):");
-        String lastName = app.extractLastName(fullName);
+        String lastName = " ";
+	try {
+	    lastName = app.extractLastName(fullName);
+	} catch (IllegalArgumentException ex) {
+	    JOptionPane.showConfirmDialog(null, ex.getMessage());
+	}
         String msg = "Your last name is: " + lastName;
         JOptionPane.showMessageDialog(null, msg);
     }
     
     public String extractLastName(String fullName) {
-        
+        if (fullName == null || fullName.length() < 1) {
+	    throw new IllegalArgumentException();
+	}
         String[] nameParts = fullName.split(" ");
         return nameParts[nameParts.length - 1];
     }

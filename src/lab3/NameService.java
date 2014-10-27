@@ -10,6 +10,9 @@ package lab3;
 public class NameService {
     private static final int FIRST_NAME_IDX = 0;
     private static final int LAST_NAME_IDX = 1;
+ 
+    private static final int MIN_NAME_LEN = 2;
+    private static final int ALLOWED_NAME_PARTS = 2;
     
     /**
      * Finds and returns the last name from within a full name. Caution: 
@@ -19,8 +22,17 @@ public class NameService {
      * @return the last name
      */
     public String extractLastName(String fullName) {
+        if (fullName == null) {
+	    throw new InvalidNameException();
+	}
+        if (fullName.length() < MIN_NAME_LEN) {
+	    throw new InvalidNameLengthException();
+	}
         String[] nameParts = fullName.split(" ");
-        return nameParts[LAST_NAME_IDX];
+	if (nameParts.length != ALLOWED_NAME_PARTS) {
+	    throw new InvalidNameFormatException();
+	}
+        return nameParts[LAST_NAME_IDX].replace('_', ' ');
     }
     
     /**
@@ -31,8 +43,17 @@ public class NameService {
      * @return the first name
      */
     public String extractFirstName(String fullName) {
+        if (fullName == null) {
+	    throw new InvalidNameException();
+	}
+        if (fullName.length() < MIN_NAME_LEN) {
+	    throw new InvalidNameLengthException();
+	}
         String[] nameParts = fullName.split(" ");
-        return nameParts[FIRST_NAME_IDX];
+	if (nameParts.length < ALLOWED_NAME_PARTS) {
+	    throw new InvalidNameFormatException();
+	}
+        return nameParts[FIRST_NAME_IDX].replace('_', ' ');
     }
 
     /**
@@ -42,6 +63,9 @@ public class NameService {
      * @return the length of the name or part.
      */
     public int getNameLength(String name) {
+        if (name == null) {
+	    throw new InvalidNameException();
+	}
         return name.length();
     }
     
