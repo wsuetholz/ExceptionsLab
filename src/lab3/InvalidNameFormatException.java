@@ -13,11 +13,11 @@ public class InvalidNameFormatException extends IllegalArgumentException {
     }
 
     public InvalidNameFormatException(String s) {
-	super(exceptionString + "\n" + s);
+	super(exceptionString);
     }
 
     public InvalidNameFormatException(String message, Throwable cause) {
-	super(exceptionString + "\n" + message, cause);
+	super(exceptionString, cause);
     }
 
     public InvalidNameFormatException(Throwable cause) {
