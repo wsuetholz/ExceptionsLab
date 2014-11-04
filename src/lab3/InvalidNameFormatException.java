@@ -6,7 +6,7 @@ package lab3;
  * @version 1.0
  */
 public class InvalidNameFormatException extends IllegalArgumentException {
-    private static String exceptionString = "Name Format Invalid!";
+    private static final String exceptionString = "Name Format Invalid!";
     
     public InvalidNameFormatException() {
 	super (exceptionString);

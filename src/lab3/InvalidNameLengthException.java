@@ -6,7 +6,7 @@ package lab3;
  * @version 1.0
  */
 public class InvalidNameLengthException extends IllegalArgumentException {
-    private static String exceptionString = "Name Length Invalid!";
+    private static final String exceptionString = "Name Length Invalid!";
     
     public InvalidNameLengthException() {
 	super (exceptionString);

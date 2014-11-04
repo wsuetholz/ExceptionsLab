@@ -6,7 +6,7 @@ package lab3;
  * @version 1.0
  */
 public class InvalidNameException extends IllegalArgumentException {
-    private static String exceptionString = "Name Parameter Invalid!";
+    private static final String exceptionString = "Name Parameter Invalid!";
     
     public InvalidNameException() {
 	super (exceptionString);
