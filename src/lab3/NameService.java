@@ -20,8 +20,11 @@ public class NameService {
      * 
      * @param fullName - a name containing a first name and a last name
      * @return the last name
+     * @throws InvalidNameException if fullName is null
+     * @throws InvalidNameLengthException if fullName is too short.  Must be at least 2 characters long
+     * @throws InvalidNameFormatException if fullName doesn't have the correct number of parts.  Must have 2 parts.
      */
-    public String extractLastName(String fullName) {
+    public String extractLastName(String fullName) throws IllegalArgumentException {
         if (fullName == null) {
 	    throw new InvalidNameException();
 	}
@@ -41,8 +44,11 @@ public class NameService {
      * 
      * @param fullName - a name containing a first name and a last name
      * @return the first name
+     * @throws InvalidNameException if fullName is null
+     * @throws InvalidNameLengthException if fullName is too short.  Must be at least 2 characters long
+     * @throws InvalidNameFormatException if fullName doesn't have the correct number of parts.  Must have 2 parts.
      */
-    public String extractFirstName(String fullName) {
+    public String extractFirstName(String fullName) throws IllegalArgumentException {
         if (fullName == null) {
 	    throw new InvalidNameException();
 	}
@@ -61,8 +67,9 @@ public class NameService {
      * 
      * @param name - any full name or part of a name.
      * @return the length of the name or part.
+     * @throws InvalidNameException if fullName is null
      */
-    public int getNameLength(String name) {
+    public int getNameLength(String name) throws IllegalArgumentException {
         if (name == null) {
 	    throw new InvalidNameException();
 	}
